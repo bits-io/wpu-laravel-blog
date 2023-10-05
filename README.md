@@ -1,4 +1,8 @@
-#### WPU Laravel 1, 2, 3, 4
+# WPU Laravel 
+## Intro 1
+## Instalasi dan Konfigurasi 2
+## Struktur Folder Routes dan View 3
+## Blade Templating Engine 4
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
