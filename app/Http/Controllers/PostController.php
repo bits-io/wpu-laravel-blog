@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use App\Models\Category;
 
 class PostController extends Controller
 {
@@ -13,9 +14,14 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('blog', [
-            'title' => 'Blog',
-            'posts' => Post::all()
+        // $post = Post::first();
+        // dd($post->category);
+        // $category = Category::first();
+        // dd($category->posts);
+        return view('posts', [
+            'title' => 'All Posts',
+            'posts' => Post::latest()->get(),
+            // 'posts' => Post::all()
         ]);
     }
 
