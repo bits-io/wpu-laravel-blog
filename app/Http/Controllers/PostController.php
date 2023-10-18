@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\Category;
+use App\Models\User;
 
 class PostController extends Controller
 {
@@ -18,9 +19,22 @@ class PostController extends Controller
         // dd($post->category);
         // $category = Category::first();
         // dd($category->posts);
+
+        $title = '';
+        if (request('category')) {
+            $category = Category::firstWhere('slug', request('category'));
+            $title = ' in ' . $category->name;
+        }
+
+        if (request('author')) {
+            $author = User::firstWhere('username', request('author'));
+            $title = ' by ' . $author->name;
+        }
+
         return view('posts', [
-            'title' => 'All Posts',
-            'posts' => Post::latest()->get(),
+            'title' => 'All Posts' . $title,
+            'active' => 'posts',
+            'posts' => Post::latest()->filter(request(['search', 'category', 'author']))->paginate(7)->withQueryString(),
             // 'posts' => Post::all()
         ]);
     }
@@ -48,6 +62,7 @@ class PostController extends Controller
     {
         return view('post', [
             "title" => "Single Post",
+            'active' => 'posts',
             "post" => $post
         ]);
     }
