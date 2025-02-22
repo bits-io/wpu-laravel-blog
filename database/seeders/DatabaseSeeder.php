@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Post;
 use App\Models\Category;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -26,11 +27,12 @@ class DatabaseSeeder extends Seeder
         //     'password' => bcrypt('password')
         // ]);
 
-        // User::create([
-        //     'name' => 'Doddy Ferdiansyah',
-        //     'email' => 'doddy@gmail.com',
-        //     'password' => bcrypt('password')
-        // ]);
+        User::create([
+            'name' => 'dobith',
+            'username' => 'dobith',
+            'email' => 'dobith@gmail.com',
+            'password' => Hash::make('password')
+        ]);
 
         User::factory(3)->create();
 

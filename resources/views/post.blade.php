@@ -8,7 +8,11 @@
 
                 <p>By. <a class="text-decoration-none" href="/posts?author={{ $post->author->username }}">{{ $post->author->name }}</a> in <a href="/posts?category={{ $post->category->slug }}">{{ $post->category->name }}</a></p>
 
-                <img class="img-fluid" src="https://source.unsplash.com/1200x400/?{{ $post->category->name }}" class="card-img-top" alt="{{ $post->category->name }}">
+                @if ($post->image)
+                    <img class="img-fluid" src="{{ asset('storage/' . $post->image) }}}}" class="card-img-top" alt="{{ $post->category->name }}">
+                @else
+                    <img class="img-fluid" src="https://source.unsplash.com/1200x400/?{{ $post->category->name }}" class="card-img-top" alt="{{ $post->category->name }}">
+                @endif
 
                 <article class="my-3 fs-5">
                     {!! $post->body !!}
